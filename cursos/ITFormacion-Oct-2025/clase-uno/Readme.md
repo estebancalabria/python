@@ -217,3 +217,161 @@ Para saber si se instalo bien
 python -m pygame.examples.aliens
 ```
 
+### Tipos de datos
+
+#### Para todos los tipos de datos
+
+* type(variable) : Nos dice el tipo de dato de una variable
+* isinstance(variable, tipo) no dice si un variable es de un tipo de dato determinado
+* id(variable) : Me devuelve la posicion en memoria de la variable
+
+#### Entero (int)
+
+```python
+# Tipos de datos primitivos
+
+# Tipos de datos Enero
+a = 10
+b = -25
+c = 1_000_000   #Podes usar los guiones bajos para legibilidad
+
+print (a + b + c)
+print(type(a))
+print(type(a).__name__)
+print(isinstance(a, int))
+
+#No hay limite paa el int depende de la memoria disponible
+
+numero_muy_grande = 10 ** 100  # ** es el operador de elevado a 
+print(numero_muy_grande)
+```
+
+Operadores: 
+* Suma: +
+* Exponente : **
+* Division : //
+* Resto : %
+
+##### Booleano (bool) 
+
+Admite solo los valores True y False (Con la T y la F mayuscula)
+
+```python
+
+a = 50
+
+v = True
+f = False
+mayor = a > 18
+es_50 = a == 50  #Tambien puedo poner es_50 = (a == 50) si le da mayor claridad
+
+b = 30
+distinto_a_30 = (b != 30)   #False
+
+
+print(mayor)
+print(es_50)
+print(type(mayor))
+print(type(es_50))
+```
+
+#### Flotantes (float)
+
+```python
+x = 3.14
+y = 2.0  # Como le puse el punto a pesar de que es un entero lo va tomar como un floar
+print(type(y))
+
+#El float internamente se representa en 64 bits como usando doble presicion como C (IEEE 754)
+print(0.1 + 0.2)    # 0.30000000000000004 grrr... es una aproximacion, no es exacto
+# OJO CON LOS FLOAT PARA TEMAS DE DINERO
+
+cientifica = 1.5e3 #1.5 * 10^3 = 1500
+print(cientifica)
+```
+
+Operadores :
+* Division /
+
+---
+ - ##### Divisiones
+```python
+a = 5
+b = 2
+c = a / b
+print(type(a))
+print(type(b))
+print(type(c))
+print(c)
+
+a = 5
+b = 2
+c = a // b
+resto = a % b
+print(type(a))
+print(type(b))
+print(type(c))
+print(c)
+```
+---
+
+#### Complejos (complex) : Curiosidad de Python
+
+```python
+
+z = 2 + 3j
+print(type(z))
+print(z)
+
+comp = (-1) ** (1/2)
+print(comp)
+print(comp.real)
+print(comp.imag)
+
+```
+
+#### Decimal
+
+* Es un tipo especial punto fijo que lo considero usar si trabajo con Dinero por ejemplo
+* No es un tipo de dato parte del lenguaje, es una liberia estandar que se hizo por el problema de precision de los puntos flotantes
+
+```python
+from decimal import Decimal
+a = 0.1
+b = 0.2
+print(a + b)  ## No Da preciso
+
+a = Decimal("0.1")
+b = Decimal("0.2")
+print(a + b)
+print(type(a))
+```
+
+#### Funciones Numericas
+
+Usando la libreria Math
+
+```
+import math
+
+print(math.pi)
+print(math.sqrt(2))
+# Pones math. y deja el autocompletado te liste todas las operaciones matematicas que no estan como operador
+```
+
+#### String (str)
+
+Los String en python son INMUTABLES (No se pueden cambiar)
+
+```
+nombre = "Esteban"
+print(nombre)
+print(type(nombre))
+
+#Le voy a tratar de cambiar un caracter
+#nombre[2] = 'a' #Esto da un error porque los string son inmutables. Una vez que se crean no se pueden cambiar
+
+print(id(nombre))
+nombre = nombre + " " + "Calabria" # En memoria tengo un lugar que dice "Esteban" y otro "Esteban Calabria"
+print(id(nombre)) #Aca se ve claramente que es otra variable distinta
+```
