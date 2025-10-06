@@ -16,6 +16,7 @@
    * Exploto con todo lo que es Inteligencia Artficial
    * Muy Versatil para cualquier tipo de aplicacion
    * Todos los caminos IT conducen a Python
+   * Tiene una sintaxis muy conveniente como por ejemplo los operadores de slicing (:) y salto (::)
      
 
 ### Usos de Python
@@ -374,4 +375,108 @@ print(type(nombre))
 print(id(nombre))
 nombre = nombre + " " + "Calabria" # En memoria tengo un lugar que dice "Esteban" y otro "Esteban Calabria"
 print(id(nombre)) #Aca se ve claramente que es otra variable distinta
+```
+
+- ##### Declaracion Strings
+
+```python
+nombre = "Esteban"
+apellido = 'Calabria'
+parrafo = """
+Este es un parrafo con muchas lineas
+las comillas triples permiten que un string ocupe muchas lineas...
+Se usa un monton
+"""
+
+```
+- ##### Indexacion y slicing
+
+```python
+nombre = "Esteban"
+
+print("Longitud de un string")
+print(len(nombre))
+
+print("Primer Letra:")
+print(nombre[0])       #La primer letra es la de la posicion 0
+print(type(nombre[0])) #No existe el tipo de dato caracter como tal
+
+
+print("\nUltima Letra")  #El \n es el salto de linea como en el lenguaje c
+print(nombre[len(nombre)-1])
+print(nombre[-1])
+
+print("\nCorar la dadena")
+print(nombre[1:3])
+
+print("\nLos primeros 4 caracteres")
+print(nombre[:4])
+
+print("\nLos ultimos 3 caracteres")
+print(nombre[-3:])
+
+print("\nDel tercer caracter al final")
+print(nombre[2:])
+
+print("\nTodo")
+print(nombre[:])
+
+print("\nInvertido")
+print(nombre[::-1])
+
+print("\nDe dos en dos")
+print(nombre[::2])
+
+print("\nDe dos en dos a partir de la segunda posicion")
+print(nombre[1::2])
+```
+
+Operadores:
+* :  - Operador de Slicing - a [inicio:fin]
+* :: - Operador de salto - a[inicio:fin:salto]
+* in
+* not in
+
+- #### Pertenencia
+
+```
+frase = "Hola que tal"
+print("Hola" in frase)
+print("Hola" not in frase)
+print("Chau" not in frase)
+```
+
+- #### Metodos Utiles
+
+```python
+mensaje = "   hola  "
+print( len(mensaje) )
+print( mensaje.strip() )
+print( len(mensaje.strip()) )
+print( mensaje.lstrip() )
+print( len(mensaje.lstrip()) )
+print( mensaje.rstrip() )
+print( len(mensaje.rstrip()) )
+
+nombre = "sR esteban calabria"
+print(nombre.upper())
+print(nombre.lower())
+print(nombre.capitalize())
+print(nombre.title())
+print(nombre.swapcase())
+```
+
+- ##### Formatear Strings
+
+```python
+nombre = "Esteban"
+edad = 45
+print(f"Me llamo {nombre} y tengo {edad} años")  #Codigo mucho mas legible y eficiente a nivel memoria
+
+#Si yo hago esto
+frase = "Me llamo " + nombre + " y tengo " + edad +" años"
+#Como los strings son inmutable termino teniendo mucos strings en memoria
+# "Me llamo"
+# "Esteban"
+# "Me llamo Esteban"
 ```
