@@ -85,7 +85,7 @@ print(f"El 15 pertenece en la lista {15 in lista}")
 print(f"El 25 no pertenece en la lista {25 not in lista}")
 ```
 
-- #### Operaciones (Slicing, step y pertenencia)
+- #### Concatenacion y repeticion
 
 ```python
 lista1 = [1,2,3,4,5]
@@ -107,7 +107,48 @@ print(lista_de_ceros)
 for elemento in lista_total:
     print(elemento)
 ```
-- 
+
+ - #### Metodos de la lista
+
+```python
+lista = [1,3,4,5]
+print(lista)
+
+print("\nAppend 6")
+lista.append(6)
+print(lista)
+
+print("\nInsert 1,2")
+lista.insert(1,2) #Inserta en la posicion 1 el 2 
+print(lista)
+
+print("\nExtendemos [7,8,9]")
+lista.extend([7,8,9])
+print(lista)
+
+print("\nAgrego y luego Remove 9")
+lista.append(45)
+print(lista)
+lista.remove(45)  #Saca el primero, si esta varias veces lo saca una sola vez
+print(lista)
+
+print("\nPop")  #Saca el ultimo
+lista.pop()
+print(lista)
+
+lista.pop(0) #Saca el primero
+print(lista)
+
+print("\nReverse")
+lista.reverse()
+print(lista)
+
+print("\nAgrego -1 y ordeno")
+lista.append(-1)
+print(lista)
+lista.sort()
+print(lista)
+```
 
 ## Estructuras de control
 
