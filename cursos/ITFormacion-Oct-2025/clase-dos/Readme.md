@@ -23,14 +23,17 @@
 
 ## Tipos de datos (estructurados)
 
+* None         ==>  None es un tipo de dato especial
 * Listas        =>  []
 * Tuplas        =>  ()
 * Rangos        =>  range
 * Enumerate     => enumetate
 * Conjuntos     => {}
-* Diccionarios  => {}
+* Diccionarios  => {}  (Como un json)
+* Tipos de datos Definidos por el usuario
+   * Clases
 
-### listas
+### Listas
 
 - #### Declaracion
 
@@ -301,6 +304,125 @@ print(frutas)
 frutas.clear()
 print(frutas)
 
+```
+
+### Diccionarios
+
+-#### Declaracion
+
+```python
+persona = {
+    "nombre" : "Esteban",
+    "apellido" : "Calabria",
+    "edad" : 45
+}
+
+print(type(None))
+print(persona)
+print(type(persona))
+print("Nombre : " + persona["nombre"])
+print("Edad : " + str(persona.get("edad")))
+
+print("No tengo el campo profesion")
+print("Profesion : " + persona.get("profesion", "Sin Profesion")) ##Con un valor por defecto
+print(persona.get("profesion")) ##Me deuvelve None si no existe
+
+#Agrego propiedades dinamicamicamente
+print("Agrego el campo profesion dinamicamente")
+persona["profesion"] = "Docente"
+
+##Cosas que tiran error
+#print(persona.apellido) ##Esto asi no anda
+```
+
+-#### Iterar sobre diccionarios
+
+```python
+persona = {
+    "nombre" : "Esteban",
+    "apellido" : "Calabria",
+    "edad" : 45
+}
+
+#Solo las claves
+for clave in persona: 
+  print(clave)
+
+print(persona.keys())  #Convierte el diccionario en una lista de claves
+for clave in persona.keys():
+  print(f"{clave}")
+
+print("")
+#Iterar claves y valores
+for clave in persona: 
+  print(f"{clave} :  {persona[clave]}")
+
+
+print("")
+print(persona.items())  #Convierte el diccionario en una lista de tuplas
+for clave, valor in persona.items():
+  print(f"{clave} :  {valor}")
+
+
+print("")
+print("Muestro y recorro el .values()")
+print(persona.values())  #Convierte el diccionario en una lista de valores
+for valor in persona.values():
+  print(f"{valor}")
+
+
+```
+
+-#### Trabajo con Python
+
+```python
+personas = [
+    { 
+        "nombre" : "Esteban",
+        "apellido" : "Calabria",
+        "edad" : 45,
+        "direccion" : {
+            "calle" : "Av Siempre Viva",
+            "numero" : 123
+        }
+    },
+    {
+        "nombre" : "Juan"
+        , "apellido" : "Perez"
+        , "edad" : 25
+    }
+]
+
+print(personas)
+print(personas[0])
+print(personas[0]["nombre"])
+print(personas[0]["direccion"])
+print(personas[0]["direccion"]["calle"])
+
+segunda_persona = personas[1]
+print(segunda_persona)
+
+del segunda_persona["edad"]
+print(segunda_persona)
+
+apellido = segunda_persona.pop("apellido")
+print(apellido)
+print(segunda_persona)
+
+### Clases
+
+```python
+class Persona:
+    def __init__(self, nombre, apellido, edad):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.edad = edad
+
+persona = Persona("Esteban", "Calabria", 45)
+print(f"Nombre {persona.nombre}")
+print(f"Apellido {persona.apellido}")
+print(f"Edad {persona.edad}")
+print(persona.__dict__)
 ```
 
 ## Estructuras de control
