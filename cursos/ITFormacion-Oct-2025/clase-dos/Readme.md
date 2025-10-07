@@ -23,6 +23,13 @@
 
 ## Tipos de datos (estructurados)
 
+* Listas        =>  []
+* Tuplas        =>  ()
+* Rangos        =>  range
+* Enumerate     => enumetate
+* Conjuntos     => {}
+* Diccionarios  => {}
+
 ### listas
 
 - #### Declaracion
@@ -150,6 +157,152 @@ lista.sort()
 print(lista)
 ```
 
+### Tuplas
+
+```python
+lista = [1,2,3]
+tupla = (1,2,3)
+
+print(lista)
+print(tupla)
+
+print(type(lista))
+print(type(tupla))
+
+try:
+  tupla[1] = 3
+except:
+  print("No se puede modificar una tupla dio error")
+
+
+#Desempaquetar
+tupla = (1,2,3)
+variable1, variable2, variable3 = tupla
+print(variable1)
+print(variable2)
+print(variable3)
+
+#Desempaquetar sirve tambien para las listas
+lista = [1,2,3]
+variable1, variable2, variable3 = lista
+print(variable1)
+print(variable2)
+print(variable3)
+
+#Esto da error si o si tengo que sacar todas
+#variable1, variable2 = tupla
+#print(variable1)
+#print(variable2)
+
+`` 
+
+### Rangos
+
+```python
+lista = [1,2,3,4,5]
+rango = range(1,6)   #El rango es como el :: el ultimo elemento no lo incluye
+lista_de_rango = list(rango)
+
+print(lista)
+print(rango)
+print(lista_de_rango)
+
+print(type(lista))
+print(type(rango))
+
+#Es iterable
+for elemento in range(1,10):
+  print(elemento)
+
+print(f"Rango especificando solo el casi ultimo {list(range(5))} ")  
+print(f"Rango especificando el primero y el casi ultimo {list(range(1,5))} ")  
+print(f"Rango especificando un salto (range(1,11,2)) {list(range(1,11,2))} ") 
+print(f"Rango de atras para adelante (range(10,0,-1)) {list(range(10,0,-1))} ") 
+
+lista = ["Juan", "Pedro", "Ana", "Laura"]
+for nombre in lista:
+  print(nombre)
+
+for i in range(len(lista)):
+  print(f"Posicion {i} elemento {lista[i]}")
+
+
+#print(enumerate(lista))
+for i, nombre in enumerate(lista):
+  print(f"Posicion {i} elemento {nombre}")
+
+# ["Juan", "Pedro", "Ana", "Laura"]  => enumetate(["Juan", "Pedro", "Ana", "Laura"]) => [(0,"Juan"), (1,"Pedro"), (2,"Ana"), (3,"Laura")]
+```
+
+### Conjuntos
+
+Operadores
+* in
+* not in
+* & (interseccion)
+* | (union)
+* - (diferencia)
+* ^ (union menos intereseccion)
+   
+```python
+# Es como una lista que no admite valores repetidos
+
+nombre = {"Juan", "Pedro", "Ana", "Laura"}
+print(nombre)
+print(type(nombre))
+
+nombre = {"Juan", "Pedro", "Ana", "Laura", "Juan"}  #Incluyo un elemento duplicado
+print(nombre)
+
+vacio = set() #Las llaves se usan tanto para conjuntos como para diccionario, entonces para conjuntos vacios usamos set
+print(vacio)
+
+print(type(set()))  #<class 'set'>
+print(type({}))     #<class 'dict'>
+
+
+#Operacione entre conjuntos
+millonarios = {"Musk","Gates","MrBeast"}
+inteligentes = {"Musk","Gates","Einstein"}
+
+print("millonarios_inteigentes")
+millonarios_inteigentes = millonarios & inteligentes        #interseccion
+print(millonarios_inteigentes)
+
+print("millonarios no inteligentes")
+millonarios_no_inteligentes = millonarios - inteligentes    #Diferencia (al primer grupo le quito los del segudno)
+print(millonarios_no_inteligentes)
+
+print("o millonarios o inteligentes")
+pobres_inteligentes = millonarios ^ inteligentes         #Diferencia simetrica (lo contrario a la interseccion)
+print(pobres_inteligentes)
+
+print("Union")
+todos = millonarios | inteligentes                         #Union
+print(todos)
+
+#Podemos usar el in y el not inn
+musk_es_inteligente = "Musk" in inteligentes
+print(f"Musk es inteligente { musk_es_inteligente  }")
+
+```
+
+Metodos para conjuntos
+
+```python
+frutas = {"manzana", "platano"}
+frutas.add("naranja")   #Agrego uno solo
+frutas.update(["kiwi", "uva"])   #Agrego varios
+frutas.discard("platano")  #Nuncca da un error
+frutas.remove("kiwi") #Da error si no existe
+frutas.pop() #Remueve un elemento aleatorio, conceptualmente los conjuntos no tienen un orden
+print(frutas)
+
+frutas.clear()
+print(frutas)
+
+```
+
 ## Estructuras de control
 
 ### IF 
@@ -169,4 +322,27 @@ elif lista1> lista2 :
 ```python
 for elemento in lista_total:
     print(elemento)
+```
+
+Opciones de FOR
+
+```python
+lista = ["Juan", "Pedro", "Ana", "Laura"]
+
+#Recorro la lista
+for nombre in lista:
+  print(nombre)
+
+#Recorro un rango
+for elemento in range(1,10):
+  print(elemento)
+
+#Recorro un rango y una lista a la vez
+for i in range(len(lista)):
+  print(f"Posicion {i} elemento {lista[i]}")
+
+#Recorro un enumerate
+#print(enumerate(lista))
+for i, nombre in enumerate(lista):
+  print(f"Posicion {i} elemento {nombre}")
 ```
