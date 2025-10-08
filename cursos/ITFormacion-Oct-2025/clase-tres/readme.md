@@ -1,4 +1,4 @@
-# Clase Tres - 08 de Octubre del 22025
+# Clase Tres - 08 de Octubre del 2025
 
 ## Repaso
 
