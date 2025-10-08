@@ -3,7 +3,6 @@
 ## Repaso
 
 * None - Especial
-* NotImplemented - Especial
 * list - Listas - []
     * Operadores : y ::
     * Metodos : pop()
@@ -14,12 +13,42 @@
 * dict - Diccionarios - {}
 * Tipo de Datos definidos por el usuario : Clases
 
-Estructuras de control
-* for
-* if
+---
+## Estructuras de control
+- ### for
+
+> Ya lo estuvimos viendo
+
+- ### if
+
+> Ya lo estuvimos viendo
+
+- ### Switch / match / case (no se usa tanto)
+
+```python
+x = 3
+
+match x:
+  case 1:
+    print("uno")
+  case 2: 
+    print("dos")
+  case 3:
+    print("tres")
+  case _:
+    print("Otro numero")  #este seria default en otros lenguajes
+```
+
+Pero la gente de python prefiere la version pythonica de switch
 
 ---
----
+## Tipos de Datos y Valores Especiales (nuevos)
+
+* Tipos
+   * NotImplemented - Especial
+   * function -> Tipo Funcion
+* Valore Especiales
+   * math.nan que es un float
 
 ## Genelidades de python
 
@@ -355,7 +384,137 @@ Aparementemente las funciones en python pueden devolver varios valores pero en r
 
 ## Aspectos avanzados de funciones y expresiones Lamda
 
+- ### Variables tipo funcion (punteros a funciones)
+
+```python
+def saludar(nombre="Desconocido"):
+  print(f"Hola {nombre}")
+
+funcion = saludar  #sin el parentesis parentesis
+print(type(funcion))
+print(type(saludar))
+
+funcion()
+```
+
+---
+- ### Funciones de Orden Superior
+
+En python puedo
+* Asignar funciones a una variable
+* Recibir funciones como parametro (de otra funciones)
+* Puedo declarar funciones dentro de funciones
+   * Tener funciones que devuelven funciones
+
+> Las funciones en python son objetos de primera clase
+
+---
+
+- #### Funciones como parametros
+
+```python
+#Funciones como parametros
+
+def sumar(a,b):
+  return a+b
+
+def restar(a,b):
+  return a-b
+
+def operar(a,b, funcion):
+  return funcion(a,b)
+
+resultado = operar(10,5, sumar)
+print(resultado)
+
+resultado = operar(10,5, sumar)
+print(resultado)
+
+resultado = operar(10,5, restar)
+print(resultado)
+```
+
+---
+
+- #### Currying (funciones que devuelven funciones)
+
+```python
+def sumar(x):
+  
+  def sumar_intern(y):
+    return x+y
+  
+  return sumar_intern
+
+
+#En vez de hacer sumar(2,2) haces...
+resultado = sumar(2)(2)
+print(f"La suma 2 + 2 es {resultado}")
+
+```
+---
+- ### Funciones anonimas o lamba
+
+Una sintaxis especial alternativa que tiene tanto python como otros lenguajes para definir funciones
+* Sintaxis
+   * lambda [parametro1, parametro2, parametro3] : [expresion retorno]
+
+```python
+def sumar(a,b): #Una funcion que tienene un nombre 
+  return a+b
+
+sumar_lambda = lambda a,b: a+b   #Es una forma simplificada de definir lo mismo, expresion lambda, funcion anonima
+
+resultado = sumar_lambda(2,2)
+print(resultado)
+
+def operar(a,b, funcion):
+  return funcion(a,b)
+
+resultado = operar(10,5, lambda a,b: a+b)   #Le puedo pasar una expresion labda en el lugar (inline)
+print(resultado)
+
+resultado = operar(10,5, sumar)    # Le puedo pasar una funcion con nombre comun
+print(resultado)
+
+resultado = operar(10,5, sumar_lambda) # Le puedo pasar una variable de tipo funcion que sea una funcion comun o lambda indistinto
+print(resultado)
+
+```
+---
+
+- ### Metaprogracion de funciones
+
+```python
+# Metaprogracion de funciones / reflection
+import inspect
+
+def sumar(a,b): 
+  return a+b
+
+func = sumar
+#func = lambda x,y : x+y
+print(f"El tipo de la funcion es {type(func)}")
+print(f"El nombre de la funcion es {func.__name__}")
+print(f"El codigo de la funcion en bytecode {func.__code__.co_code}")  #En bytecode como un ensamblador de python
+print(f"El codigo de la funcion en codigo {inspect.getsource(func)}")  #En bytecode como un ensamblador de python
+print(f"Los parametros de la funcion son {func.__code__.co_varnames} (una tupla con los parametros)")  #En bytecode como un ensamblador de python
+print(f"La cantidad de la funcion son {func.__code__.co_argcount} (una tupla con los parametros)")  #En bytecode como un ensamblador de python
+print(f"La vaiable es invocable (es una funcion) {callable(func)}")
+
+codigo = """
+nombre = "Esteban"
+print(f"Hola {nombre}")
+"""
+exec(codigo)
+```
+
 ## Metodos de colecciones : map, fiter, reduce, max, min
 
-## Decoradores
-
+> Para la proxima asi no nos estalla la cabeza y no nos da un surmenage
+   * Documentar funciones de forma estandar
+   * Metodos de colecciones
+   * Type hints
+   * Decoradores
+   * Generadores
+   * Expresiones regulares
