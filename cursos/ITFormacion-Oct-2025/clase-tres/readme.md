@@ -2,7 +2,8 @@
 
 ## Repaso
 
-* None - Especial 
+* None - Especial
+* NotImplemented - Especial
 * list - Listas - []
     * Operadores : y ::
     * Metodos : pop()
@@ -17,7 +18,10 @@ Estructuras de control
 * for
 * if
 
-## Genelidad de python
+---
+---
+
+## Genelidades de python
 
 - ### Obtener un numero al azar
 ```python
@@ -33,11 +37,37 @@ print(numero)
 mensaje = "par" if numero % 2 == 0 else "impar"  #En C o JAca o C# seria (numero % 2 == 0) ? "Par" : "Impar"
 print(f"El número {numero} es {mensaje}.")
 ```
+---
+- ### Separar un string en una lista de caracteres
+```python
+#Yapa, nada que ver con funciones
+cadena = "Hola que tal como andan"
+lista = list(cadena)
+print(lista)
+```
+---
+- ### Tipo Not Implemented
+Python tiene un tipo de dato llamado NotImplemented
+---
+- ### La libreria math tiene un valor especial nan (not a number)
+
+Como en javascript!
+
+```python
+import math
+
+print(f"La libreria math tiene un valor especial llamado nan {math.nan} que es de tipo  {type(math.nan)} ")
+```
+---
 
 ## Conversiones de tipo
 
 * De range a list => list(range)
 * De list a set => set(lista)   -> Es una buena manera facil de eliminar duplicados en una lista...
+* De string a list => list(cadena)  -> Separa caracter por caracter
+
+---
+---
 
 ## Compresiones de Listas
 
@@ -143,9 +173,187 @@ print(nombre_cantidad_letras)
 
 ## Iterable
 
-## Metodos
+---
+---
 
-## Expresiones Lambda
+## Funciones (y Metodos)
+
+- ### Funciones sin valor de retorno (Procedimientos)
+
+```python
+def saludar():
+  print("Hola mundo de los metodos")
+
+saludar()
+
+retorno = saludar() #Me devuelve None
+print(retorno)
+```
+
+---
+
+- ### Funciones que devuelven algo
+- 
+```python
+def sumar(a,b):
+  return a+b
+
+resultado = sumar(1,2)
+print(resultado)
+```
+
+---
+
+- ###  Especificar el nombre de los parametros al invocar
+
+```python
+#Especificar el nombre del parametro el invocar (muy comun en python)
+
+def presentar(nombre, apellido):
+  print(f"Soy {nombre} {apellido}")
+
+presentar(nombre="Juan", apellido="Perez")
+presentar("Juan", "Perez")
+presentar(apellido="Perez", nombre="Juan")
+```
+
+---
+
+- ### Parametros por defecto
+
+```python
+def saludar(nombre="Invitado"):
+  print(f"Hola {nombre}")
+
+saludar("Juan")
+saludar()
+```
+
+---
+
+- ### Parametros variables (tupla)
+
+```
+#Parametros variables
+
+def sumar(*args): #Le pongo un asterisco...
+  print(f"La funcion sumar recibio {args} de tipo {type(args)}")
+  resultado = 0
+  for arg in args:
+    resultado += arg
+  return resultado
+
+print(f"La suma del 1 al 10 es {sumar(1,2,3,4,5,6,7,8,9,10)} \n")
+
+lista = list(range(1,11))
+#print(sumar(lista)) #Tira error, la tengo que "desempaquetar" la lista
+print(f'La suma de lista desempaquetada es {sumar(*lista)} \n') #Le pongo un * adelante para desempaquetarla
+
+print(f'La suma del rango desempaquetada es {sumar(*range(1,11))} \n') #Le pongo un * adelante para desempaquetarla
+
+dict = {1:1, 4:2, 3:3}
+print(f'La suma del dict desempaquetada es {sumar(*dict)} (Toma solo las claves) \n') #Le pongo un * adelante para desempaquetarla
+```
+
+---
+
+- ### Parametros Variables (diccionario)
+
+```python
+#PArametros variables dicionario (Tengo los nombres de los parametros como parametro)
+def saludar(**args):
+    print(f"\nLa funcion saludar recibio {args} de tipo {type(args)}")
+    for key, value in args.items():
+        print(f"{key}: {value}")
+
+saludar(nombre="Juan", apellido="Perez")
+saludar(nombre="Juan", apellido="Perez", edad=30)
+
+diccionario = {"nombre": "Juan", "apellido": "Perez", "edad": 30}
+saludar(**diccionario)
+```
+
+---
+
+- ### Especificacion funciones aun no implementadas
+
+```python
+# Funciones que todavia no termine de implementar
+
+def funcion_no_implementada():     #Devuelve None
+  pass
+
+def funcion_no_implementada_2():   #Para la ejecucion y da error
+  raise NotImplementedError("Esta funcion no esta implementada")
+
+def funcion_no_implementada_3():   #Devuelve un tipo especial que se llama NotImplemented
+  return NotImplemented
+
+
+resultado = funcion_no_implementada()
+print(resultado)
+
+try:
+  resultado = funcion_no_implementada_2()
+  print(resultado)
+except:
+  print("Esto tira un error")
+
+resultado = funcion_no_implementada_3()
+print(resultado)
+
+n = NotImplemented
+print(type(n))
+```
+
+---
+
+- ### Devolver varios valores en una funcion
+
+Ejemplo1
+```python
+# Esto fue una de la razones por la que gente enloquecio con python
+# Devolver varios valores en una sola funcion
+
+def operaciones(a,b):
+  return (a+b, a-b, a*b, a/b)
+
+def operaciones_sin_parentesis(a,b):  #Igual devuelve una tupla
+  return a+b, a-b, a*b, a/b
+
+suma, resta, multiplicacion, division = operaciones(10,5)
+print(f"Suma: {suma}, Resta: {resta}, Multiplicacion: {multiplicacion}, Division: {division}")
+
+suma, resta, multiplicacion, division = operaciones_sin_parentesis(10,5)
+print(f"Suma: {suma}, Resta: {resta}, Multiplicacion: {multiplicacion}, Division: {division}")
+```
+
+Ejemplo2
+```python
+#Lo de devolver varios parametros se puede usar para devolver el resultado de la operacion 
+import math
+
+print(f"La libreria math tiene un valor especial llamado nan {math.nan} que es de tipo  {type(math.nan)} ")
+
+def dividir(a,b):
+  if b == 0:
+    return (math.nan, False)
+  return (a/b, True)
+
+divisor_como_cadena = input("Ingrese el divisor")
+divisor = int(divisor_como_cadena) #Siempre que se pueda
+cociente, correcto = dividir(10,divisor)
+if correcto:
+  print(f"Cociente: {cociente}, Correcto: {correcto}")
+else:
+  print(f"No se puede hacer la divicion. Cociente: {cociente}, Correcto: {correcto}")
+```
+
+Aparementemente las funciones en python pueden devolver varios valores pero en realidad es que estan devolviendo una tupla que luedo desempaquetamos
+
+---
+
+## Aspectos avanzados de funciones y expresiones Lamda
 
 ## Metodos de colecciones : map, fiter, reduce, max, min
 
