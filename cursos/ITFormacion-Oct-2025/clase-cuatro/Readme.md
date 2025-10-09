@@ -49,6 +49,11 @@ for atributo in dir(p):
     print(f"{atributo} :  {getattr(p, atributo)} : {type(getattr(p, atributo))}")
 ```
 
+# Google Colab
+
+* Con el ! adelante podes ejecutar una instruccion en la terminal del colab
+* Poniendo %%writefile hola.py al principio  de la celda la podemos guardar en un archivo
+
 # Funciones
 
 ## Type Hints
@@ -108,5 +113,24 @@ TypeError                                 Traceback (most recent call last)
 /tmp/ipython-input-153494062.py in <cell line: 0>()
       1 from typeguard import typechecked
 ```
-
 ---
+- ### Pydantic
+Para el tipado pero solo en la programacion orientada a objetos
+
+> https://docs.pydantic.dev/latest/
+
+```python
+from pydantic import BaseModel, ConfigDict
+
+class Persona(BaseModel):
+  model_config = ConfigDict(validate_assignment=True)   #Esto es necesario para que valide los tipos de los atributos sino lo hace solo en el constructor
+  nombre : str
+  edad : int
+
+  ## Me crea el constructor solo
+
+p = Persona(nombre="Esteban", edad=45)
+p.nombre = 44             #ValidationError  comentar y descomentar esta linea     
+p.edad = "Treinatytress"  #ValidationError  comentar y descomentar esta linea      
+print(p)
+```
