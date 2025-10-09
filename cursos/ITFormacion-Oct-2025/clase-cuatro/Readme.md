@@ -388,3 +388,40 @@ print(numeros)
 nuevo_texto = re.sub(r"[0-9]+", "NUMEROS", texto)
 print(nuevo_texto)
 ```
+# Manejo de Archivos
+
+Ejemplo1
+```python
+f = open("sample_data/README.md", "r")
+contenido = f.read()
+print(contenido)
+f.close()
+```
+
+Ejemplo2
+```python
+#El error mas comun a la hora de trabajar con archivos es olvidarnos de hacer el close
+with open("sample_data/README.md", "r") as f:
+  contenido = f.read()
+
+print(contenido)
+```
+
+Ejemplo3
+```python
+#El error mas comun a la hora de trabajar con archivos es olvidarnos de hacer el close
+with open("sample_data/README.md", "r") as f:
+  contenido = f.readlines()
+
+contenido_sin_saltos = [linea.strip() for linea in contenido if len(linea.strip())>0]
+print(type(contenido))
+print(contenido_sin_saltos)
+```
+
+Ejemplo4. Los arhivos tambien son Iterables
+```python
+#Los archivos tambien son iterables
+with open("sample_data/README.md", "r") as f:
+  for linea in f:
+    print(linea.strip())
+```
