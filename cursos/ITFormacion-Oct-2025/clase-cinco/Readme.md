@@ -121,3 +121,41 @@ if __name__ == "__main__":
 import mi_paquete.archivo1 as saludos
 print(saludos.saludar("Juan"))
 ```
+
+# Zip
+
+El zip es un metodo que se utiliza mucho para recorrer dos iteradores en simultaneo y tambien para generar diccionarios a partir de datos que tengo deperdigados
+
+```python
+nombres = ["Juan", "Pedro", "Maria", "Ignoado"]
+edades = [20, 30, 40]
+
+nombres_edades = zip(nombres, edades)
+print(nombres_edades)
+print(list(nombres_edades))
+print(list(nombres_edades)) #Se gasta!!!
+print(type(nombres_edades))
+
+for nombre, edad in zip(nombres, edades):
+    print(nombre, edad)
+
+diccionario = dict(zip(nombres, edades))
+print(diccionario)
+
+lista1 = [1,2,3,4,5]
+lista2 = [1,2,3,4,5]
+
+lista3 = [x + y for x, y in zip(lista1, lista2)]
+print(lista3)
+```
+
+Generando lista de diccionarios
+
+```python
+claves = ["nombre", "edad"]
+nombres = ["Juan", "Pedro"]
+edades = [20, 30]
+
+diccionario = [dict(zip(claves,valores)) for valores in zip(nombres, edades)]
+print(diccionario)
+```
