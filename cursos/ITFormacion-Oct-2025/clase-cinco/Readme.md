@@ -109,3 +109,15 @@ print(f"El resultado de la suma es: {resultado}")
 if __name__ == "__main__":
    #El codigo que quiero que se ejecute solamente si es un programa principal
 ```
+
+-- ## Paquetes
+
+* Puedo agrupar varios modulos en un paquete
+* Para ello creo una carpeta con el nombre del paquete y dentro pongo todo los archivos con extesion .py
+* Puedo crear un archivo especial llamado __init__.py que se ejecuta automaticamente cuando importo cualquier archivo del paquete
+* Para importar un modulo del paquete lo hago de la siguiente manera
+
+```python
+import mi_paquete.archivo1 as saludos
+print(saludos.saludar("Juan"))
+```
