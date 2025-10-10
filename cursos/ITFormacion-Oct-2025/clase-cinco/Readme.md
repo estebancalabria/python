@@ -42,4 +42,12 @@ python -m venv [Nombre-Entorno]
 ```cmd
 pip install [paquete que quiero instalar]
 ```
-* 
+* La lista de paquetes que una aplicacion necesita se guarda en un archivo llamado requirements.txt
+* Muchas veces cuando un proyecto tiene muchas librerias en vez de instalarlas una por una se hace pip install requirements.txt
+* El nombre **requirements.txt** es un nombre estandar que adopto la industria de python como archivo donde guardar las librerias que necesita un proyecto
+* Para generar el archivo requirements.txt
+```cmd
+pip freeze > requirements.txt
+```
+* Existen otras alternativas para crear entornos viruales por ejemplo conda
+  * https://anaconda.org/anaconda/conda
