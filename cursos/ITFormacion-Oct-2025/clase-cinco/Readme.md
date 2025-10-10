@@ -51,3 +51,61 @@ pip freeze > requirements.txt
 ```
 * Existen otras alternativas para crear entornos viruales por ejemplo conda
   * https://anaconda.org/anaconda/conda
+* Para salir de entorno
+```
+deactivate
+```
+
+
+# Modulos, paqueres e imports
+
+* En la practica nadie hace un proyecto en un solo archivo.py extenso sino que lo separa en varios modulos.
+* Por ejempo puedo tener este archivo llamado matematicas.py
+```python
+
+def sumar(a, b):
+    return a + b
+
+PI = 3.14159
+```
+y usarlo desde otro archivo
+
+
+
+- ## Importarlo Directamente
+```python
+import matematicas
+
+print(matematicas.sumar(5, 3))
+```
+
+- ## Importarlo con alias
+```python
+import matematicas as mt
+
+print(mt.sumar(5, 3))
+```
+
+Generarlmente hay librerias populares que tiene un alias que de conocido
+* import nunpy as np
+* import pandas as pd
+* import tensoflow as tf
+
+
+- ## Importar elementos especificos
+```python
+from matematicas import sumar
+
+resultado = sumar(5, 3)
+print(f"El resultado de la suma es: {resultado}")
+```
+
+- ## Nombres en los modulos
+
+* Cada modulo tiene una variable especial independiente que se llama __name__
+* Si el modulo se ejecuta por linea de comandos su nomnre es "__main__" sino es directamente le nombre del archivo
+* Por eso van a ver muchas veces en pythos
+```python
+if __name__ == "__main__":
+   #El codigo que quiero que se ejecute solamente si es un programa principal
+```
